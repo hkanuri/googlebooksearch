@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-async function connectdb() {
-    try {
-        const connectmongo = await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/booksearch", { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
-        console.log("Connected to Mongo DB")
-    } catch (err) {
-        console.log(err);
-    }
-}
+mongoose.connect(
+    process.env.MONGODB_URI ||
+    "mongodb://localhost/googleboks"
+);
 
 const bookSeed =
 {
@@ -32,4 +28,3 @@ db.Book
         process.exit(1);
     });
 
-module.exports = connectdb;
